@@ -36,7 +36,7 @@ class ProductController extends Controller
 
             if($request->hasFile('image'))
             {
-                $image = $request->file('images');
+                $image = $request->file('image');
                 $extension = $image->getClientOriginalExtension();
                 $image_name = time(). '.' .$extension;
                 $image->move('uploads/images', $image_name);
@@ -47,7 +47,7 @@ class ProductController extends Controller
     
             return response()->json([
                 'status' => 200,
-                'message' => "Customer added successfully",
+                'message' => "Product added successfully",
             ]);
         }
     }
