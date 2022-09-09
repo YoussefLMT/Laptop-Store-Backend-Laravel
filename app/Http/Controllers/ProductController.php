@@ -74,7 +74,7 @@ class ProductController extends Controller
 
             return response()->json([
                 'status' => 200,
-                'customer' => $product,
+                'product' => $product,
             ]);
 
         }else{
