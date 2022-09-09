@@ -174,4 +174,18 @@ class ProductController extends Controller
         }
     }
 
+
+
+    public function getSpecificProducts()
+    {
+        $latest_products = Product::orderBy('id', 'desc')->limit(4)->get();
+        $home_products = Product::limit(8)->get();
+
+        return response()->json([
+            'status' => 200,
+            'latest_products' => $latest_products,
+            'home_products' => $home_products
+        ]);
+    }
+
 }
