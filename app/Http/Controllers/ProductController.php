@@ -96,7 +96,7 @@ class ProductController extends Controller
             'price'=> 'required',
             'quantity' => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
 
@@ -118,18 +118,18 @@ class ProductController extends Controller
                 $product->quantity = $request->quantity;
                 $product->description = $request->description;
     
-                if($request->hasFile('image'))
-                {
-                    $path = $product->image;
-                    if(File::exists($path)){
-                        File::delete($path);
-                    }
-                    $image = $request->file('image');
-                    $extension = $image->getClientOriginalExtension();
-                    $image_name = time(). '.' .$extension;
-                    $image->move('uploads/images', $image_name);
-                    $product->image = 'uploads/images/' . $image_name;
-                }
+                // if($request->hasFile('image'))
+                // {
+                //     $path = $product->image;
+                //     if(File::exists($path)){
+                //         File::delete($path);
+                //     }
+                //     $image = $request->file('image');
+                //     $extension = $image->getClientOriginalExtension();
+                //     $image_name = time(). '.' .$extension;
+                //     $image->move('uploads/images', $image_name);
+                //     $product->image = 'uploads/images/' . $image_name;
+                // }
     
                 $product->update();
         
