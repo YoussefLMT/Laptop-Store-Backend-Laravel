@@ -40,7 +40,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('update-user/{id}', [UserController::class, 'updateUser']);
     Route::delete('delete-user/{id}', [UserController::class, 'deleteUser']);
 
-    Route::post('add-to-cart', [CartController::class, 'addToCart']);
+    Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
 
 
 });
