@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -45,6 +46,22 @@ class CartController extends Controller
         return response()->json([
             'status' => 200,
             'cart_count' => $cart_count,
+        ]);
+    }
+
+
+
+    function getCartProducts(){
+
+        $cart_products = DB::table('cart')
+        ->join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', auth()->user()->id)
+        ->select('products.*', 'cart.id as cart_id')
+        ->get();
+
+        return response()->json([
+            'status' => 200,
+            'cart_products' => $cart_products,
         ]);
     }
 
