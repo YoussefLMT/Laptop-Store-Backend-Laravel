@@ -10,7 +10,7 @@ class CartController extends Controller
     
     function addToCart(Request $request, $product_id){
 
-        $product_in_cart = Cart::where('user_id', auth('sanctum')->user()->id)
+        $product_in_cart = Cart::where('user_id', auth()->user()->id)
                 ->where('product_id', $product_id)
                 ->count();
 

@@ -21,26 +21,28 @@ use App\Http\Controllers\CartController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+Route::get('products', [ProductController::class, 'getProducts']);
+Route::post('add-product', [ProductController::class, 'addProduct']);
+Route::get('get-product/{id}', [ProductController::class, 'getProduct']);
+Route::put('update-product/{id}', [ProductController::class, 'updateProduct']);
+Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct']);
+Route::get('specific-products', [ProductController::class, 'getSpecificProducts']);
+
+
+Route::get('users', [UserController::class, 'getUsers']);
+Route::post('add-user', [UserController::class, 'addUser']);
+Route::get('get-user/{id}', [UserController::class, 'getUser']);
+Route::put('update-user/{id}', [UserController::class, 'updateUser']);
+Route::delete('delete-user/{id}', [UserController::class, 'deleteUser']);
+
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('logout', [AuthController::class, 'logOut']);
     
-    Route::get('products', [ProductController::class, 'getProducts']);
-    Route::post('add-product', [ProductController::class, 'addProduct']);
-    Route::get('get-product/{id}', [ProductController::class, 'getProduct']);
-    Route::put('update-product/{id}', [ProductController::class, 'updateProduct']);
-    Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct']);
-    Route::get('specific-products', [ProductController::class, 'getSpecificProducts']);
-
-
-    Route::get('users', [UserController::class, 'getUsers']);
-    Route::post('add-user', [UserController::class, 'addUser']);
-    Route::get('get-user/{id}', [UserController::class, 'getUser']);
-    Route::put('update-user/{id}', [UserController::class, 'updateUser']);
-    Route::delete('delete-user/{id}', [UserController::class, 'deleteUser']);
-
     Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
+
 
 
 });
