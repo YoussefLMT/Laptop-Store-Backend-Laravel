@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\Order_Product;
+use App\Models\OrderProduct;
 
 class OrderController extends Controller
 {
@@ -14,18 +14,18 @@ class OrderController extends Controller
         
         $user_id = auth()->user()->id;
 
-        $cartData = Cart::where('user_id', $user_id)->get();
+        $cart_data = Cart::where('user_id', $user_id)->get();
 
         $order = Order::create([
             'user_id' => $user_id,
-            'address' => $req->address,
+            'address' => $request->address,
             'city' => $request->city
         ]);
 
-        foreach($cartData as $cart){
+        foreach($cart_data as $cart){
 
-            $order_products = new Order_Product;
-            $order_products->order_id = $order->$order_id;
+            $order_products = new OrderProduct;
+            $order_products->order_id = $order->id;
             $order_products->product_id = $cart->product_id;
             $order_products->save();
             

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('get-cart-prducts', [CartController::class, 'getCartProducts']);
     Route::delete('remove-product/{id}', [CartController::class, 'removeProduct']);
 
+    Route::post('place-order', [OrderController::class, 'placeOrder']);
 
 
 });
