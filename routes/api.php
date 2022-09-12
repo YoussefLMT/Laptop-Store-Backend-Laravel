@@ -48,6 +48,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('remove-product/{id}', [CartController::class, 'removeProduct']);
 
     Route::post('place-order', [OrderController::class, 'placeOrder']);
+    Route::get('total-price', [OrderController::class, 'getOrderTotalPrice']);
 
 
 });
