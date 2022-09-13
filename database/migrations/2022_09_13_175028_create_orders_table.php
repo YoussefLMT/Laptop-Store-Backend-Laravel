@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->string('address');
             $table->string('city');
+            $table->string('total_amount');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

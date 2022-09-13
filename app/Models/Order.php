@@ -13,6 +13,7 @@ class Order extends Model
         'user_id',
         'address',
         'city',
+        'total_amount',
         'status'
     ];
 }

@@ -34,10 +34,16 @@ class OrderController extends Controller
 
         $cart_data = Cart::where('user_id', $user_id)->get();
 
+        $total_price = DB::table('cart')
+        ->join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', $user_id)
+        ->sum('products.price');
+
         $order = Order::create([
             'user_id' => $user_id,
             'address' => $request->address,
-            'city' => $request->city
+            'city' => $request->city,
+            'total_amount' => $total_price
         ]);
 
         foreach($cart_data as $cart){
