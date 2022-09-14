@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StatisticsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('get-orders', [OrderController::class, 'getAllOrders']);
     Route::get('get-order-products/{id}', [OrderController::class, 'getOrderProducts']);
+
+    Route::get('statistics', [StatisticsController::class, 'getTotalCount']);
 
 
 });
