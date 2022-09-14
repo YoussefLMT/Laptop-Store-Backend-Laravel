@@ -101,4 +101,22 @@ class OrderController extends Controller
         ]);
 
     }
+
+
+    
+    function getOrderProducts($id){
+
+        $order_products = DB::table('orders')
+        ->join('order_products', 'order_products.order_id', '=', 'orders.id')
+        ->join('products', 'order_products.product_id', '=', 'products.id')
+        ->where('orders.id', $id)
+        ->get();
+
+        return response()->json([
+            'status' => 200,
+            'order_products' =>  $order_products
+        ]);
+
+
+    }
 }
