@@ -54,6 +54,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('get-orders', [OrderController::class, 'getAllOrders']);
     Route::get('get-order-products/{id}', [OrderController::class, 'getOrderProducts']);
+    Route::put('update-order-status/{id}', [OrderController::class, 'updateOrderStatus']);
 
     Route::get('statistics', [StatisticsController::class, 'getTotalCount']);
     Route::get('orders-statistics', [StatisticsController::class, 'getOrdersStatistics']);
