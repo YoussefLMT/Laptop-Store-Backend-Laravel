@@ -48,6 +48,12 @@ class StatisticsController extends Controller
         ->get()
         ->toArray();
 
+        $pendingOrdersCount = Order::where('status', 'pending')->count();
+        $inProgressOrdersCount = Order::where('status', 'in progress')->count();
+        $shippingOrdersCount = Order::where('status', 'shipping')->count();
+        $shippedOrdersCount = Order::where('status', 'shipped')->count();
+
+
         foreach($count as $key => $array){
             $monthlyArray[$array['month']-1] = $array;
         }
@@ -55,6 +61,10 @@ class StatisticsController extends Controller
         return response()->json([
             'status' => 200,
             'ordersCount' => $monthlyArray,
+            'pendingOrdersCount' => $pendingOrdersCount,
+            'inProgressOrdersCount' => $inProgressOrdersCount,
+            'shippingOrdersCount' => $shippingOrdersCount,
+            'shippedOrdersCount' => $shippedOrdersCount
         ]);
     }
 
