@@ -118,7 +118,7 @@ class UserController extends Controller
 
                 return response()->json([
                     'status' => 404,
-                    'message' => 'Customer not found!',
+                    'message' => 'User not found!',
                 ]);
 
             }
